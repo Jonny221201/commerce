@@ -1,6 +1,5 @@
 const products = [
     {
-        id: '1',
         name: 'Airpods',
         image: '/images/airpods.png',
         description: 'Good quality maded with good hands',
@@ -12,7 +11,6 @@ const products = [
         numReviews: 4,
     },
     {
-        id: '2',
         name: 'Airpods',
         image: '/images/airpods.png',
         description: 'Good quality maded with good hands',
@@ -24,7 +22,6 @@ const products = [
         numReviews: 4,
     },
     {
-        id: '3',
         name: 'Airpods',
         image: '/images/airpods.png',
         description: 'Good quality maded with good hands',
@@ -36,7 +33,6 @@ const products = [
         numReviews: 4,
     },
     {
-        id: '4',
         name: 'Airpods',
         image: '/images/airpods.png',
         description: 'Good quality maded with good hands',
@@ -48,7 +44,6 @@ const products = [
         numReviews: 4,
     },
     {
-        id: '5',
         name: 'Airpods',
         image: '/images/airpods.png',
         description: 'Good quality maded with good hands',
