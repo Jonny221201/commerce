@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductPage';
+import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
+import './index.css'
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
     <Container>
 
     <Route path='/' component={HomePage} exact />
-    <Route path='/product/:id' component={ProductsPage} />
+    <Route path='/products/:id' component={ProductPage} />
+    <Route path='/cart/:id?' component={CartPage} />
 
     </Container>
 

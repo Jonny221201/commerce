@@ -4,12 +4,15 @@ const connectDB = require('./config/db');
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 dotenv.config()
 
 connectDB()
 
 const app = express();
+
+app.use(express.json())
 
 app.use((req, res, next) => {
     console.log('Hello')
@@ -21,6 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/products', productRoutes)
+app.use('/users', userRoutes)
 
 app.use(notFound)
 
