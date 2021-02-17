@@ -62,6 +62,9 @@ const orderSchema = mongoose.Schema({
     deliveredAt: { 
         type: Date 
     },
+    paymentMethod: {
+        type: String,
+    }
 }, {
     timestamps: true
 })

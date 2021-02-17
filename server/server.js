@@ -28,8 +28,11 @@ app.use('/products', productRoutes)
 app.use('/users', userRoutes)
 app.use('/orders', orderRoutes)
 
-app.use(notFound)
+app.use('/config/paypal', (req, res) => 
+    res.send(process.env.PAYPAL_CLIENT_ID)
+)
 
+app.use(notFound)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000

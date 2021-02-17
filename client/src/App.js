@@ -12,6 +12,7 @@ import ProfilePage from './pages/ProfilePage';
 import DeliveryPage from './pages/DeliveryPage';
 import PaymentPage from './pages/PaymentPage'
 import PlaceOrderPage from './pages/PlaceOrderPage'
+import OrderPage from './pages/OrderPage'
 import './index.css'
 
 
@@ -32,6 +33,7 @@ function App() {
     <Route path='/profile' component={ProfilePage}  />
     <Route path='/products/:id' component={ProductPage} />
     <Route path='/cart/:id?' component={CartPage} />
+    <Route path='/order/:id' component={OrderPage} />
 
     </Container>
 
