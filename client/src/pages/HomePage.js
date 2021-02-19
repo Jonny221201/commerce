@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import Message from '../components/message';
 import Loader from '../components/loader';
+// import Carousel from '../components/Carousel'
 
 
 const HomePage = () => {
@@ -23,7 +24,7 @@ const HomePage = () => {
 
     return (
      <>
-
+        {/* <Carousel /> */}
         <h1>Latest Products</h1>
         {loading ? ( <Loader /> ) : error ? ( <h1><Message variant='danger' /></h1> ) : 
           (<Row>

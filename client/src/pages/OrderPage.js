@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { PayPalButton } from 'react-paypal-button-v2'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
 import Loader from '../components/loader';
-import { getOrderDetails } from '../actions/orderActions'
+import { getOrderDetails, payOrder } from '../actions/orderActions'
+import { ORDER_PAY_RESET } from '../constants/orderConstants'
 
-const OrderPage = ({ match, cart }) => {
+const OrderPage = ({ match }) => {
     const orderId = match.params.id
 
     const [sdkReady, setSdkReady] = useState(false)
@@ -49,8 +51,9 @@ order.itemsPrice = addDecimals(order.orderItems.reduce((acc, item) => acc + item
         }
 
         if(!order || successPay) {
+            dispatch({ type: ORDER_PAY_RESET })
             dispatch(getOrderDetails(orderId))
-        } else if(!order.isPaid) {
+        } else if (!order.isPaidValue) {
             if(!window.paypal) {
                 addPayPalScript()
             } else {
@@ -60,7 +63,11 @@ order.itemsPrice = addDecimals(order.orderItems.reduce((acc, item) => acc + item
 
     }, [dispatch, orderId, successPay, order])
 
-
+const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult)
+    dispatch(payOrder(orderId, paymentResult))
+}
+    
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <>
         <h1>Order {order._id}</h1>
         <Row>
@@ -86,7 +93,7 @@ order.itemsPrice = addDecimals(order.orderItems.reduce((acc, item) => acc + item
                                 <strong>Method: </strong>
                                 {order.paymentMethod}
                                 </p>
-                                {order.isPaid ? ( <Message variant='success'>Paid on {order.paidAt}</Message> ) : ( <Message variant='danger'>Not Paid</Message>)}
+                                {order.isPaidValue ? ( <Message variant='success'>Paid on {order.paidAt}</Message> ) : ( <Message variant='danger'>Not Paid</Message>)}
                             </ListGroup.Item>
 
                             <ListGroup.Item>
@@ -145,7 +152,14 @@ order.itemsPrice = addDecimals(order.orderItems.reduce((acc, item) => acc + item
                                         <Col>${order.totalPrice}</Col>
                                     </Row>
                                 </ListGroup.Item>
-                               
+                               {!order.isPaidValue && (
+                                   <ListGroup.Item>
+                                       {loadingPay && <Loader />}
+                                       {!sdkReady ? <Loader /> : (
+                                           <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHandler} />
+                                       )}
+                                   </ListGroup.Item>
+                               )}
                             </ListGroup>
                         </Card> 
                    </Col>
