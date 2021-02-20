@@ -1,0 +1,32 @@
+.cardContainer {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cardInfoContainer {
+    width: 22%;
+    background: transparent;
+    cursor: pointer;
+}
+.cardInfoContainer img {
+    width: 100%;
+}
+.cardInfoContainer h6, 
+.cardInfoContainer h5,
+.cardInfoContainer p 
+{
+    margin: 10px 0 0 0;
+}
+
+@media only screen and (max-width: 1000px) {
+    .cardInfoContainer {
+        width: 44%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .cardInfoContainer {
+        width: 88%;
+    }
+}

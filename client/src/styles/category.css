@@ -1,0 +1,18 @@
+@media only screen and (max-width: 1000px) {
+    .categoryContainer a {
+        width: 25%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .categoryContainer a {
+        width: 33%;
+    }
+}
+@media only screen and (max-width: 478px) {
+    .categoryContainer a {
+        width: 50%;
+    }
+}
+
+
+
