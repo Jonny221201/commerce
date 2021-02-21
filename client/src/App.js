@@ -27,7 +27,9 @@ function App() {
    <Header />
 
     <Route path='/' component={HomePage} exact />
-    <Route path='/search/:keyword' component={HomePage} />
+    <Route path='/search/:keyword' component={HomePage} exact />
+    <Route path='/page/:pageNumber' component={HomePage} exact />
+    <Route path='/search/:keyword/page/:pageNumber' component={HomePage} exact />
     <Route path='/about' component={AboutPage} />
     <Route path='/login' component={LoginPage}  />
     <Route path='/delivery' component={DeliveryPage}  />
@@ -41,7 +43,8 @@ function App() {
     <Route path='/admin/userlist' component={userListPage} />
     <Route path='/admin/orderlist' component={OrderListPage} />
     <Route path='/admin/user/:id/edit' component={UserEditPage} />
-    <Route path='/admin/productlist' component={ProductListPage} />
+    <Route path='/admin/productlist' component={ProductListPage} exact />
+    <Route path='/admin/productlist/:pageNumber' component={ProductListPage} exact />
     <Route path='/admin/product/:id/edit' component={ProductEditPage} />
 
    <Footer />
