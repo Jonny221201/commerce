@@ -19,11 +19,13 @@ import userListPage from "./pages/userListPage";
 import UserEditPage from "./pages/UserEditPage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductEditPage from "./pages/ProductEditPage";
+import ScrollToTop from './components/ScrollToTop'
 import "./index.css";
 
 function App() {
   return (
     <Router>
+       <ScrollToTop>
       <Header />
 
       <Route path="/" component={HomePage} exact />
@@ -57,6 +59,7 @@ function App() {
       />
 
       <Footer />
+      </ScrollToTop>
     </Router>
   );
 }
