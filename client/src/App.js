@@ -27,6 +27,7 @@ function App() {
    <Header />
 
     <Route path='/' component={HomePage} exact />
+    <Route path='/search/:keyword' component={HomePage} />
     <Route path='/about' component={AboutPage} />
     <Route path='/login' component={LoginPage}  />
     <Route path='/delivery' component={DeliveryPage}  />
