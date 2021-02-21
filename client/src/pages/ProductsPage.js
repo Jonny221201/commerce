@@ -6,6 +6,7 @@ import Message from "../components/message";
 import Loader from "../components/loader";
 
 const ProductsPage = () => {
+  
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
